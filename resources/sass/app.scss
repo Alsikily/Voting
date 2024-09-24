@@ -1,0 +1,176 @@
+// Fonts
+@import url('https://fonts.bunny.net/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+
+hr {
+    margin: 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.votes-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.add-choose {
+    display: flex;
+    gap: 0 6px;
+    flex-wrap: wrap;
+    > h6 {
+        width: 100%;
+        display: block;
+        margin-bottom: 2px;
+    }
+    input {
+        flex: 1;
+    }
+    button {
+        width: fit-content;
+    }
+    hr {
+        margin: 5px 0;
+    }
+}
+
+.vote-chooses {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    > input {
+        pointer-events: none;
+        background-color: #f1f3f5;
+    }
+    &:not(:empty) {
+        margin-top: 10px;
+    }
+}
+
+.my-votes {
+    .card {
+        margin-bottom: 10px;
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+        }
+        .chooses {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            > h6.vote-link {
+                font-weight: bold;
+            }
+            .choose {
+                > .title {
+                    display: flex;
+                    justify-content: space-between;
+                    width: 100%;
+                    > .content {
+                        line-height: 16px;
+                    }
+                    > .prog {
+                        align-self: flex-end;
+                    }
+                }
+                > .progress {
+                    height: 26px;
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}
+
+.vote-chooses-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    .choose {
+        --color-m: #ccc;
+        --color-mm: #bdbdbd;
+        position: relative;
+        border: 1px solid var(--color-mm);
+        padding: 10px 10px;
+        border-radius: 5px;
+        .choose-polls-count {
+            display: inline-block;
+            margin-top: 1px;
+            
+        }
+        &:has(> input:checked) {
+            --color-m: #0b5ed7;
+            --color-mm: #0b5ed7;
+        }
+        &:not(:has(> input:checked)) {
+            --color-m: #ccc;
+            --color-mm: #bdbdbd;
+        }
+        > input {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+        > .content {
+            > .info {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 5px;
+                font-weight: bold;
+                > .item {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    .select {
+                        display: none;
+                        width: 16px;
+                        height: 16px;
+                        border-radius: 50%;
+                        border: 1px solid var(--color-mm);
+                        position: relative;
+                        &::after {
+                            content: "";
+                            display: inline-block;
+                            width: 75%;
+                            height: 75%;
+                            background-color: var(--color-mm);
+                            position: absolute;
+                            left: 50%;
+                            top: 50%;
+                            transform: translate(-50%, -50%);
+                            border-radius: 50%;
+                        }
+                    }
+                }
+            }
+            > .progress-bar {
+                background-color: #f0f0f0;
+                width: 100%;
+                height: 8px;
+                border-radius: 25px;
+                > .progress {
+                    background-color: var(--color-m);
+                }
+            }
+        }
+        &:has(> input:checked) {
+            > .content > .info > .item .select {
+                display: inline-block !important;
+            }
+        }
+    }
+}
